@@ -2,7 +2,6 @@ package org.pancakelab.repository;
 
 import org.pancakelab.model.Order;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,7 +35,6 @@ public class OrderRepository implements Repository<UUID, Order> {
         .toList();
   }
 
-
   @Override
   public List<Order> findAll() {
     return database.values().stream().toList();
@@ -47,8 +45,4 @@ public class OrderRepository implements Repository<UUID, Order> {
     return database.remove(itemId);
   }
 
-  @Override
-  public void removeAll(Collection<Order> items) {
-    items.forEach(i -> remove(i.getId()));
-  }
 }

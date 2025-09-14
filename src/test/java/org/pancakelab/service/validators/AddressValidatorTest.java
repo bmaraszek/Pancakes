@@ -23,31 +23,31 @@ class AddressValidatorTest {
   @ParameterizedTest
   @CsvSource({"1", "10", "100"})
   public void validateCorrectBuildingNumber(int buildingNumber) {
-    when(address.getBuildingNumber()).thenReturn(buildingNumber);
-    when(address.getRoomNumber()).thenReturn(1);
+    when(address.buildingNumber()).thenReturn(buildingNumber);
+    when(address.roomNumber()).thenReturn(1);
     Assertions.assertDoesNotThrow(() -> validator.validate(address));
   }
 
   @ParameterizedTest
   @CsvSource({"-1", "0", "101"})
   public void validateIncorrectBuildingNumber(int buildingNumber) {
-    when(address.getBuildingNumber()).thenReturn(buildingNumber);
+    when(address.buildingNumber()).thenReturn(buildingNumber);
     assertThrows(IllegalArgumentException.class, () -> validator.validate(address));
   }
 
   @ParameterizedTest
   @CsvSource({"1", "10", "100"})
   public void validateCorrectRoomNumber(int roomNumber) {
-    when(address.getRoomNumber()).thenReturn(roomNumber);
-    when(address.getBuildingNumber()).thenReturn(1);
+    when(address.roomNumber()).thenReturn(roomNumber);
+    when(address.buildingNumber()).thenReturn(1);
     assertDoesNotThrow(() -> validator.validate(address));
   }
 
   @ParameterizedTest
   @CsvSource({"-1", "0", "101"})
   public void validateIncorrectRoomNumber(int roomNumber) {
-    when(address.getRoomNumber()).thenReturn(roomNumber);
-    when(address.getBuildingNumber()).thenReturn(1);
+    when(address.roomNumber()).thenReturn(roomNumber);
+    when(address.buildingNumber()).thenReturn(1);
     assertThrows(IllegalArgumentException.class, () -> validator.validate(address));
   }
 }

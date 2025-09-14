@@ -38,8 +38,4 @@ public class PancakeRepository implements Repository<UUID, Pancake> {
     return database.remove(itemId);
   }
 
-  @Override
-  public void removeAll(Collection<Pancake> items) {
-    items.forEach(i -> remove(i.getId()));
-  }
 }

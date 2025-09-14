@@ -5,8 +5,8 @@ import org.pancakelab.model.Address;
 public class AddressValidator implements Validator<Address> {
   @Override
   public void validate(Address in) {
-    validateBuilding(in.getBuildingNumber());
-    validateRoom(in.getRoomNumber());
+    validateBuilding(in.buildingNumber());
+    validateRoom(in.roomNumber());
   }
 
   private void validateBuilding(int buildingNumber) {
